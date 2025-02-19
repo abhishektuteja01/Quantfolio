@@ -43,38 +43,6 @@ npm install
 node main.js
 ```
 
-## Usage Guide
-
-### Adding a Stock Transaction
-Users can add a stock with the following details:
-```sh
-Enter Ticker Symbol: AAPL
-Enter Quantity: 10
-Enter Purchase Price: 150
-Enter Target Price: 170
-Select Platform: Robinhood
-```
-
-### Viewing Portfolio Summary
-The system displays:
-```sh
-Total Portfolio Value: $15,200
-Total Profit/Loss: +$200
-Overall Return: +5.5%
-```
-
-### Updating Stock Prices
-Users can update stock prices manually or fetch real-time data from an API:
-```sh
-Update AAPL price: 165
-```
-
-### Target Price Alerts
-The system sends an alert when a stock reaches or exceeds its target price:
-```sh
-Alert: AAPL has reached $170. Consider selling.
-```
-
 ## UML Class Diagram
 Refer to the UML Class Diagram to understand the relationships between classes.
 
