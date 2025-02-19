@@ -31,16 +31,16 @@ Quantfolio is a multi-asset portfolio tracker that helps users record transactio
 
 ### Clone the Repository
 ```sh
-git clone https://github.com/your-username/quantfolio.git
+git clone https://github.com/abhishektuteja01/Quantfolio.git
 cd quantfolio
 ```
 ### Install Dependencies
 ```sh
 npm install
 ```
-### Run the Application
+### Run the 
 ```sh
-node app.js
+node main.js
 ```
 
 ## Usage Guide
@@ -82,21 +82,3 @@ Refer to the UML Class Diagram to understand the relationships between classes.
 
 ## License
 This project is licensed under the MIT License.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

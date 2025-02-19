@@ -1,0 +1,31 @@
+{
+  "name": "quantfolio",
+  "version": "1.0.0",
+  "description": "## Project Overview Quantfolio is a multi-asset portfolio tracker that helps users record transactions, monitor returns, and receive alerts when stocks reach target prices. It simplifies investment management across multiple trading platforms, allowing investors to track stocks efficiently without the need for spreadsheets or manual calculations.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abhishektuteja01/Quantfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abhishektuteja01/Quantfolio/issues"
+  },
+  "homepage": "https://github.com/abhishektuteja01/Quantfolio#readme",
+  "devDependencies": {
+    "@babel/preset-env": "^7.26.9",
+    "@eslint/js": "^9.20.0",
+    "eslint": "^9.20.1",
+    "eslint-config-prettier": "^10.0.1",
+    "globals": "^15.15.0",
+    "jest": "^29.7.0",
+    "jsdoc": "^4.0.4",
+    "prettier": "^3.5.1"
+  }
+}
