@@ -1,21 +1,25 @@
-/**
- * @file YahooFinanceData.js
- * @description Fetches stock data from Yahoo Finance (simulated).
- */
+// file: YahooFinanceData.js
+import MarketData from "../MarketData.js";
 
-class YahooFinanceData {
-  constructor() {
+class YahooFinanceData extends MarketData {
+  /**
+   * @param {string} tickerSymbol - The stock ticker symbol.
+   */
+  constructor(tickerSymbol) {
+    super(tickerSymbol);
     this.requestHeaders = { "User-Agent": "Quantfolio" };
   }
 
   /**
-   * Fetches stock price (simulated response).
-   * @param {string} ticker - The stock ticker symbol.
+   * Fetches stock price from Yahoo Finance (override the base class method).
    * @returns {number} Fake price data.
    */
-  fetchPrice(ticker) {
-    console.log(`Fetching price for ${ticker} from Yahoo Finance...`);
-    return (Math.random() * 100 + 100).toFixed(2);
+  fetchPrice() {
+    console.log(`Fetching price for ${this.tickerSymbol} from Yahoo Finance...`);
+    // Simulate fetching
+    this.currentPrice = (Math.random() * 100 + 100).toFixed(2);
+    this.lastUpdated = new Date().toISOString();
+    return this.currentPrice;
   }
 }
 

@@ -193,7 +193,78 @@ class MarketData {
   }
 }
 ```
+### **2.3 Liskov Substitution Principle (LSP)**
+**Example:** All fetchers like AlphaVantageData, BinanceData, and YahooFinanceData can be used interchangeably where a .fetchPrice() is expected:
+```javascript
+// Any fetcher with a .fetchPrice() returning a number is valid
+function displayPrice(dataFetcher) {
+  const price = dataFetcher.fetchPrice();
+  console.log("Price:", price);
+}
 
+displayPrice(new AlphaVantageData("API_KEY", "AAPL"));
+displayPrice(new BinanceData("BTC/USD"));
+displayPrice(new YahooFinanceData("GOOGL"));
+// The code works for all, substituting them in any place expecting .fetchPrice().
+```
+**Breaking SRP (Bad Example)**
+```javascript
+// If BinanceData returned a string or an object instead of a numeric-like value:
+class BinanceData {
+  fetchPrice() {
+    return { price: "some string" }; // breaks the expected numeric return
+  }
+}
+// Now code that expects a number could break or behave incorrectly.
+```
+
+### **2.4 Interface Segregation Principle (ISP)**
+**Example:** Each data fetcher only implements fetchPrice(). We don’t force them to also implement an alert interface or portfolio logic.
+```javascript
+// We keep fetchPrice() minimal for data fetchers.
+// No single huge interface that includes fetchPrice + alert + portfolio updates.
+```
+**Breaking SRP (Bad Example)**
+```javascript
+// BAD: A big interface with many unrelated methods
+class IDataService {
+  fetchPrice() {}
+  sendAlert() {}
+  updatePortfolio() {}
+  // ...
+}
+
+// Then every data fetcher must implement methods it doesn't need, e.g., sendAlert().
+```
+
+### **2.5 Dependency Inversion Principle (DIP)**
+**Example:** High-level modules should depend on abstractions, not concrete implementations.
+```javascript
+// file: MarketDataService.js
+class MarketDataService {
+  constructor(fetcher) {
+    this.fetcher = fetcher; // an abstraction: just something with .fetchPrice()
+  }
+
+  getPrice() {
+    return this.fetcher.fetchPrice();
+  }
+}
+
+// We can pass in any fetcher instance without changing MarketDataService
+```
+**Breaking SRP (Bad Example)**
+```javascript
+// BAD: Directly creating a specific fetcher inside the service
+class MarketDataService {
+  constructor() {
+    this.alphaVantage = new AlphaVantageData("HARDCODED_KEY");
+  }
+  getPrice(ticker) {
+    return this.alphaVantage.fetchPrice(ticker);
+  }
+}
+```
 ---
 
 ## **3. Design Patterns Used in Quantfolio**
